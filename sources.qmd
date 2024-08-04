@@ -1,0 +1,8 @@
+---
+title: "Sources"
+editor: visual
+---
+
+This project takes its data from [Music and Mental Health Survey Results](https://www.kaggle.com/datasets/catherinerasgaitis/mxmh-survey-results) by [Catherine Rasgaitis](https://www.kaggle.com/catherinerasgaitis) on Kaggle.
+
+The data comes from a Google form survey spread across different social media platforms, as well as public places such as libraries and parks. We focused on the study of different mental health conditions and respondants' favorite genres. Variables such as their age, hours a day, whether or not they play an instrument, compose, etc. were left out and not part of the analysis.

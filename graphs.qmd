@@ -1,0 +1,114 @@
+---
+title: "Graphs"
+execute:
+  echo: FALSE
+  message: FALSE
+  warning: FALSE
+---
+
+```{r}
+#| message: false
+#| warning: false
+
+library(tidyverse)
+library(primer.data)
+library(gtsummary)
+library(brms)
+library(tidybayes)
+library(gt)
+library(tidyr)
+library(ggplot2)
+library(dplyr)
+```
+
+```{r}
+#| message: false
+
+df <- read_csv("data/mxmh_survey_results.csv")
+```
+
+```{r}
+df_filtered <- df |> 
+  rename(music_effects = "Music effects",
+         fav_genre = "Fav genre",
+         depression = "Depression",
+         anxiety = "Anxiety",
+         insomnia = "Insomnia",
+         ocd = "OCD") |> 
+  select(fav_genre, depression, anxiety, insomnia, ocd, music_effects) |> 
+  filter(!is.na(fav_genre), 
+         !is.na(depression), 
+         !is.na(music_effects), 
+         !is.na(anxiety), 
+         !is.na(insomnia), !is.na(ocd))
+```
+
+```{r}
+df_filtered$depression <- as.numeric(df_filtered$depression)
+
+df_filtered$anxiety <- as.numeric(df_filtered$anxiety)
+
+df_filtered$insomnia <- as.numeric(df_filtered$insomnia)
+
+df_filtered$ocd <- as.numeric(df_filtered$ocd)
+```
+
+```{r}
+ggplot(df_filtered, aes(x = fav_genre, 
+                        y = anxiety, 
+                        fill = music_effects)) +
+  geom_bar(stat = "summary", 
+           fun = "mean", 
+           position = position_dodge(0.9),
+           width = 0.7) +
+  geom_errorbar(stat = "summary", 
+                fun.data = mean_se, 
+                position = position_dodge(0.8), 
+                width = 0.7) +
+  labs(x = "", 
+       y = "Average Anxiety Level", 
+       title = "Anxiety Scores by Favorite Music Genre and Music Effects", 
+       fill = "Music effects") +
+  theme(axis.text.x = element_text(angle = 45, 
+                                   hjust = 1))
+```
+
+```{r}
+ggplot(df_filtered, aes(x = fav_genre, 
+                        y = insomnia, 
+                        fill = music_effects)) +
+  geom_bar(stat = "summary", 
+           fun = "mean", 
+           position = position_dodge(0.9), 
+           width = 0.7) +
+  geom_errorbar(stat = "summary", 
+                fun.data = mean_se, 
+                position = position_dodge(0.8), 
+                width = 0.7) +
+  labs(x = "", 
+       y = "Average Insomnia Level", 
+       title = "Insomnia Scores by Favorite Music Genre and Music Effects", 
+       fill = "Music effects") +
+  theme(axis.text.x = element_text(angle = 45, 
+                                   hjust = 1))
+```
+
+```{r}
+ggplot(df_filtered, aes(x = fav_genre, 
+                        y = ocd, 
+                        fill = music_effects)) +
+  geom_bar(stat = "summary", 
+           fun = "mean", 
+           position = position_dodge(0.9), 
+           width = 0.7) +
+  geom_errorbar(stat = "summary", 
+                fun.data = mean_se, 
+                position = position_dodge(0.8), 
+                width = 0.7) +
+  labs(x = "", 
+       y = "Average OCD Level", 
+       title = "OCD Scores by Favorite Music Genre and Music Effects", 
+       fill = "Music effects") +
+  theme(axis.text.x = element_text(angle = 45, 
+                                   hjust = 1))
+```
