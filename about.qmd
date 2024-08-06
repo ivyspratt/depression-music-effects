@@ -3,7 +3,7 @@ title: "About"
 ---
 
 My name is Ivy Spratt, and I am an Illinois High School Student. 
-Here is [my Github account](https://github.com/ivyspratt) where all my other projects are listed, and here is [my email](ivyspratt@gmail.com) where you are free to contact me.
+Here is [my Github account](https://github.com/ivyspratt) where all my other projects are listed, and you can contact me at ivyspratt@gmail.com.
 
 This project explores the effects of music on depression levels. The participants were asked to measure their level of depression on a scale from 1-10, 1 being the lowest, and 10 being the highest. Here is the [Github repository](https://github.com/ivyspratt/depression-music-effects).
 
