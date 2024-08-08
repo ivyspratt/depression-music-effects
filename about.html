@@ -144,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>My name is Ivy Spratt, and I am an Illinois High School Student. Here is <a href="https://github.com/ivyspratt">my Github account</a> where all my other projects are listed, and here is <a href="ivyspratt@gmail.com">my email</a> where you are free to contact me.</p>
+<p>My name is Ivy Spratt, and I am an Illinois High School Student. Here is <a href="https://github.com/ivyspratt">my Github account</a> where all my other projects are listed, and you can contact me at ivyspratt@gmail.com.</p>
 <p>This project explores the effects of music on depression levels. The participants were asked to measure their level of depression on a scale from 1-10, 1 being the lowest, and 10 being the highest. Here is the <a href="https://github.com/ivyspratt/depression-music-effects">Github repository</a>.</p>
 <p>This project was created as a part of <a href="https://bootcamp.davidkane.info/">Kane’s Data Science Bootcamp</a>.</p>
 
@@ -232,7 +232,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
+      var filterRegex = new RegExp("https:\/\/ivyspratt\.github\.io\/depression-music-effects\/");
     var isInternal = (href) => {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
