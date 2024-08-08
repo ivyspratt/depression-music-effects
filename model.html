@@ -149,7 +149,14 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#average-effects-of-all-genres-on-depression" id="toc-average-effects-of-all-genres-on-depression" class="nav-link active" data-scroll-target="#average-effects-of-all-genres-on-depression">Average effects of all genres on depression</a></li>
+  <li><a href="#average-effects-of-gospel-music-on-depression" id="toc-average-effects-of-gospel-music-on-depression" class="nav-link" data-scroll-target="#average-effects-of-gospel-music-on-depression">Average effects of gospel music on depression</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -174,6 +181,8 @@ window.Quarto = {
 </header>
 
 
+<section id="average-effects-of-all-genres-on-depression" class="level3">
+<h3 class="anchored" data-anchor-id="average-effects-of-all-genres-on-depression">Average effects of all genres on depression</h3>
 <p>To answer the question of which genre is the best to listen to, we first have to see which of the favorite genres are most associated with high/low levels of depression, by using a bayesian regression model. For this initial model, we are using this formula:</p>
 <p><span class="math display">\[
 depression_{i} = \beta_{0} + \beta_{1} fav\_genre_i
@@ -730,6 +739,9 @@ depression_{i} = \beta_{0} + \beta_{1} fav\_genre_i
 </div>
 <p>We see that on average, gospel listeners generally have lower levels of depression, while lofi listeners generally have higher levels of depression.</p>
 <p>Like every bayesian regression model, this model is not completely accurate in that it was only sent out on a couple social media platforms (Reddit, Discord, other social media), which doesn’t include data from people not involved online, and was advertised on posters and business cards (which restrict the data to a certain proximity).</p>
+</section>
+<section id="average-effects-of-gospel-music-on-depression" class="level3">
+<h3 class="anchored" data-anchor-id="average-effects-of-gospel-music-on-depression">Average effects of gospel music on depression</h3>
 <p>To give us a baseline of how listening to gospel music impacts your depression levels, we evalute it alone so we can evaluate how much lower gospel listeners’ depression levels are. We do that by taking the frequency of how often people listen to Gospel music.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -1224,6 +1236,7 @@ depression_{i} = \beta_{0} + \beta_{1} fav\_genre_i
 <p>In summary, there is no definite genre that listening to increases or decreases depression levels, though listening to the gospel genre might make a bit of an effect. Although, since Gospel listeners on average might have lower depression levels, the only conclusion we can make is that Gospel listeners, on average, have the lowest levels of depression.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
