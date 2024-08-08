@@ -6,10 +6,7 @@
 _site/
 model_cache/
 styles.css
-README_files/libs
-model_files/figure-html
-README.html
-*.html
+README_files/
 
 /.quarto/
 
