@@ -8,3 +8,6 @@ model_cache/
 styles.css
 
 /.quarto/
+README_files/libs
+model_files/figure-html
+README.html
