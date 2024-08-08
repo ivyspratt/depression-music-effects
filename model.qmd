@@ -1,6 +1,6 @@
 ---
 title: "Model"
-subtitle: "What is the best and worst genre to listen to to decrease depression levels?"
+subtitle: "Which genre's listeners have the lowest depression levels?"
 execute:
   echo: FALSE
   message: FALSE
@@ -37,13 +37,12 @@ df_filtered <- df |>
          !is.na(anxiety), 
          !is.na(insomnia), 
          !is.na(ocd))
-
 ```
 
 To answer the question of which genre is the best to listen to, we first have to see which of the favorite genres are most associated with high/low levels of depression, by using a bayesian regression model. For this initial model, we are using this formula:
 
 $$
-depression = \beta_{0} + \beta_{1} fav\_genre_i
+depression_{i} = \beta_{0} + \beta_{1} fav\_genre_i
 $$
 ```{r}
 #| label: general analysis
@@ -59,33 +58,33 @@ fit_gen <- brm(formula = depression ~ fav_genre,
 tbl_regression(fit_gen)
 ```
 
-We see that on average, gospel listeners generally have lower levels of depression, while lofi listeners generally have higher levels of depression. We calculate this further using this model:
+We see that on average, gospel listeners generally have lower levels of depression, while lofi listeners generally have higher levels of depression. 
 
-$$
-depression = \beta_{0} + \beta_{1} gospel\_freq_i + \beta_{2} lofi\_freq_i + \beta_{3} music\_effects_i
-$$
+Like every bayesian regression model, this model is not completely accurate in that it was only sent out on a couple social media platforms (Reddit, Discord, other social media), which doesn't include data from people not involved online, and was advertised on posters and business cards (which restrict the data to a certain proximity).
 
 ```{r}
 #| label: gospel and lofi analysis
 #| cache: true
 
-fit_gospel_lofi <- brm(formula = depression ~ gospel_freq + lofi_freq + music_effects,
+fit_gospel <- brm(formula = depression ~ gospel_freq,
                   data = df_filtered,
                   family = gaussian(),
                   refresh = 0,
                   silent = 2,
                   seed = 9)
-
-fit_gospel_lofi
 ```
 
-To give us a baseline of how music can transform mental health, we include the music effects variable. While listening to gospel music frequently seems to have a little bit of an effect on lowering levels of depression, listening to lofi has no effect on increasing or decreasing depression levels. 
+
+To give us a baseline of how listening to gospel music impacts your depression levels, we evalute it alone so we can evaluate how much lower gospel listeners' depression levels are. We do that by taking the frequency of how often people listen to Gospel music. 
 
 ```{r}
-tbl_regression(fit_gospel_lofi)
+#| cache: true
+
+tbl_regression(fit_gospel)
 ```
 
-In summary, there is no definite genre that listening to increases or decreases depression levels, though listening to the gospel genre might make a bit of an effect. This may be because of the religious ties to gospel music, which generally connects people and helps them mentally. 
+In summary, there is no definite genre that listening to increases or decreases depression levels, though listening to the gospel genre might make a bit of an effect. Although, since Gospel listeners on average might have lower depression levels, the only conclusion we can make is that Gospel listeners, on average, have the lowest levels of depression.
 
-Like every bayesian regression model, this model is not completely accurate in that it was only sent out on a couple social media platforms (Reddit, Discord, other social media), which doesn't include data from people not involved online, and was advertised on posters and business cards (which restrict the data to a certain proximity).
+
+
 

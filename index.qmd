@@ -1,6 +1,6 @@
 ---
 title: "Music and Mental Health"
-subtitle: "Can music fix your mental health issues?"
+subtitle: "How does music genres and mental health connect?"
 author: "Ivy Spratt"
 execute:
   echo: FALSE
@@ -56,25 +56,27 @@ df_filtered$insomnia <- as.numeric(df_filtered$insomnia)
 df_filtered$ocd <- as.numeric(df_filtered$ocd)
 ```
 
-Music has a big effect on how we live our lives, especially our mental health. In a study that collected data from a Google form, we seek to evaluate if there is a relationship between genres of music and whether or not they increase or decrease depression. The goal is to assist mental health professionals in recommending different types of genres to their patients, and figure out if there truly is one genre that is more beneficial than all of the others. We modeled depression, and it's scale on 1-10 (1 being the respondent doesn't experience it, 10 being the respondent experiences it often), as a logistic function of Gospel music and music effects. Gospel music seems to have little effect, however still decreases depression levels. The genre that is most associated with low depression rates and has the most likelihood to improve depression levels is Gospel music. 
+Music has a big effect on how we live our lives, especially our mental health. In a study that collected data from a Google form, we seek to evaluate if there is a relationship between genres of music and whether or not their listeners have high or low levels of depression. The goal is to better understand the correlation between music genres and depression, and possibly evaluate any trends between the two. We modeled depression, and it's scale on 1-10 (1 being the respondent doesn't experience it, 10 being the respondent experiences it often), as a logistic function of Gospel music and music effects. Gospel music seems to have little effect, however still decreases depression levels. The genre that is most associated with low depression rates and has the most likelihood to improve depression levels is Gospel music, reporting that people who listen to it often have 1.0 level of depression lower than others. 
 
 ```{r}
+colors <- c("#B0D9E8", "#A6C0D7", "#6D8EAE", "#2D4F6D", "#1C2D40", 
+            "#004B6A", "#003B5C", "#003248", "#002B40", "#001F2D", 
+            "#004C6C", "#003C5C", "#00324D", "#00242D", "#001F3F", 
+            "#001A33")
+
 ggplot(df_filtered, aes(x = fav_genre, 
-                        y = depression, 
-                        fill = music_effects)) +
+                        y = depression,
+                        fill = fav_genre)) +
   geom_bar(stat = "summary", 
            fun = "mean", 
            position = position_dodge(0.9), 
            width = 0.7) +
-  geom_errorbar(stat = "summary", 
-                fun.data = mean_se, 
-                position = position_dodge(0.8), 
-                width = 0.7) +
+  scale_fill_manual(values = colors) +
   labs(x = "",
        y = "Average Depression Level",
-       title = "Depression Scores by Favorite Music Genre and Music Effects", 
-       fill = "Music effects") +
+       title = "Depression Scores by Favorite Music Genre and Music Effects") +
   theme(axis.text.x = element_text(angle = 45, 
-                                   hjust = 1))
+                                   hjust = 1),
+                                   legend.position = "none")
 ```
 
