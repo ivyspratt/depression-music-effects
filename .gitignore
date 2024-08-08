@@ -9,6 +9,7 @@ styles.css
 README_files/libs
 model_files/figure-html
 README.html
+*.html
 
 /.quarto/
 
